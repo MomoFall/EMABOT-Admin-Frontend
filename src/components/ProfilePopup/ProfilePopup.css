@@ -1,0 +1,81 @@
+.profile-popup {
+  position: fixed;
+  top: 70px;
+  right: 40px;
+  z-index: 1000;
+  background: transparent;
+}
+
+.profile-popup-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px #1eb6ff22;
+  border: 1.5px solid #eaf6ff;
+  min-width: 260px;
+  padding: 24px 24px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  animation: popup-fade-in 0.18s;
+}
+
+@keyframes popup-fade-in {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.profile-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  cursor: pointer;
+}
+
+.profile-popup-close p {
+  margin: 0;
+  color: #1eb6ff;
+  transition: color 0.18s;
+  user-select: none;
+}
+
+
+
+.profile-popup-setting,
+.profile-popup-logout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.profile-popup-setting:hover {
+  background: #f5f8fb;
+}
+
+.profile-popup-logout:hover {
+  background: #ffbdbd22;
+}
+
+.profile-popup-setting img,
+.profile-popup-logout img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.profile-popup-setting p,
+.profile-popup-logout p {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #222;
+}
+
+.profile-popup-logout p {
+  color: #e74c3c;
+  font-weight: 600;
+}
