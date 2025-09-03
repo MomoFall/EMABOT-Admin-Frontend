@@ -7,7 +7,7 @@ instance.interceptors.response.use(
   error => {
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('token');
-      window.location.href = '/login'; // adapte si ta route est différente
+      window.location.href = '/signin'; // adapte si ta route est différente
     }
     return Promise.reject(error);
   }
