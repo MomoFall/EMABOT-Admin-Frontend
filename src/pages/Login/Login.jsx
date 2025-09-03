@@ -68,8 +68,6 @@ function Login() {
                 <button type="submit">Se connecter</button>
             </form>
             <div className="login-footer">
-                {/*<p>Vous n'avez pas de compte? <a href="/signin" onClick={handleSignInClick}>S'inscrire</a></p>
-                <p>Mot de passe oublié? <a href="/reset-password">Réinitialiser</a></p>*/}
             </div>
         </div>
     </div>
