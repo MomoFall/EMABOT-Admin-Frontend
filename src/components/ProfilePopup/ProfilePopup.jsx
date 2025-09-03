@@ -10,7 +10,11 @@ function ProfilePopup({setProfile}) {
   const navigate = useNavigate()
 
   const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setProfile(false)
     navigate('/login')
+    
   }
 
   return (

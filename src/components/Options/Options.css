@@ -1,38 +1,131 @@
-.options-container {
-  display: flex;
-  align-items: center;
-  background: #f3f4f6;
-  border-radius: 8px;
-  padding: 8px 12px;
-  gap: 4px;
-  width: fit-content;
+/* =========================
+   Tokens
+========================= */
+:root{
+  --opt-bg:#f3f4f6;
+  --opt-chip:#fff;
+  --opt-ink:#181c32;
+  --opt-text:#4a5874;
+  --opt-hover:#eaf2fb;
+  --opt-shadow: 0 1px 4px rgba(30,182,255,0.07);
+  --brand:#1eb6ff;
+}
+
+/* =========================
+   Container
+========================= */
+.options-container{
+  display:flex;
+  align-items:center;
+  gap: 6px;
+  background: var(--opt-bg);
+  border-radius: 12px;
+  padding: 8px clamp(8px, 1.8vw, 12px);
+  width: max-content;
+
+  /* responsive: devient un ruban scrollable sur mobile */
+  max-width: calc(100% - 48px);
   margin: 25px 30px;
-}
 
-.options-container a {
-  display: flex;
-  align-items: center;
-  padding: 7px 18px;
-  border-radius: 6px;
-  color: #4a5874;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;           /* Firefox */
+}
+.options-container::-webkit-scrollbar{ display:none; } /* WebKit */
+
+/* =========================
+   Links (tabs)
+========================= */
+.options-container a{
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding: 8px clamp(14px, 2.6vw, 18px);
+  border-radius: 10px;
+
+  color: var(--opt-text);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: background 0.15s, color 0.15s;
+  font-weight: 600;
+  font-size: clamp(.95rem, 1.6vw, 1rem);
+
+  transition: background .15s ease, color .15s ease, box-shadow .15s ease, transform .06s ease-in;
+  white-space: nowrap;
 }
 
-.options-container a.active {
-  background: #fff;
-  color: #181c32;
-  font-weight: 500;
-  box-shadow: 0 1px 4px #1eb6ff11;
+.options-container a:hover{
+  background: var(--opt-hover);
+  color: var(--opt-ink);
 }
 
-.options-container a:not(.active):hover {
-  background: #eaf2fb;
+.options-container a:active{
+  transform: translateY(1px);
 }
 
-.options-container p {
-  margin: 0;
-  padding: 0;
+/* Active chip */
+.options-container a.active{
+  background: var(--opt-chip);
+  color: var(--opt-ink);
+  box-shadow: var(--opt-shadow);
+}
+
+/* Active underline indicator (subtil) */
+.options-container a.active::after{
+  content:"";
+  position:absolute; left:10px; right:10px; bottom:6px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--brand), #59e6ff);
+  opacity: .8;
+  pointer-events:none;
+}
+
+/* =========================
+   Focus visibility (accessibility)
+========================= */
+.options-container a:focus{
+  outline: none;
+}
+.options-container a:focus-visible{
+  box-shadow: 0 0 0 3px #1eb6ff33;
+}
+
+/* =========================
+   Layout tweaks
+========================= */
+@media (max-width: 900px){
+  .options-container{
+    margin: 16px 16px 0 16px;
+    max-width: calc(100% - 32px);
+    gap: 4px;
+  }
+}
+
+@media (max-width: 520px){
+  .options-container{
+    border-radius: 10px;
+    padding: 6px 8px;
+  }
+  .options-container a{
+    padding: 8px 12px;
+    border-radius: 9px;
+  }
+  .options-container a.active::after{
+    left:8px; right:8px; bottom:5px;
+  }
+}
+
+/* =========================
+   Dark mode auto
+========================= */
+@media (prefers-color-scheme: dark){
+  :root{
+    --opt-bg:#1b1e25;
+    --opt-chip:#151923;
+    --opt-ink:#e9eef8;
+    --opt-text:#b9c2d6;
+    --opt-hover:#202633;
+    --opt-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  }
 }

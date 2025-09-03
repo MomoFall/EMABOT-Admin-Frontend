@@ -1,25 +1,144 @@
+/* =========================
+   Variables / Tokens
+========================= */
+:root{
+  --bg:#fff;
+  --panel:#fafdff;
+  --ink:#0a1128;
+  --text:#222;
+  --muted:#4a5874;
+  --border:#f0f4fa;
+  --border-2:#e3e7ef;
+  --shadow:#1eb6ff0a;
+  --radius:16px;
+}
+
+/* =========================
+   Layout global
+========================= */
 .products-container {
   margin: 32px auto;
   max-width: 1200px;
   padding: 0 16px;
 }
 
+/* =========================
+   Bloc d’ajout produit
+========================= */
+.add-products {
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 16px var(--shadow);
+  padding: 32px 32px 24px 32px;
+  margin-bottom: 32px;
+  margin-top: 12px;
+  max-width: 98vw;
+  border: 1.5px solid var(--border);
+  box-shadow: 0px 3px 1px 1px #d1eaf3dc;
+}
+
+.add-products h2 {
+  margin: 0 0 24px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.add-products > form {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.add-products label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 1.08rem;
+}
+
+.add-products input[type="text"],
+.add-products input[type="number"],
+.add-products input[type="url"],
+.add-products textarea {
+  width: 270px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border-2);
+  border-radius: 8px;
+  background: var(--panel);
+  font-size: 1rem;
+  margin-bottom: 0;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.add-products input[type="text"]:focus,
+.add-products input[type="number"]:focus,
+.add-products input[type="url"]:focus,
+.add-products textarea:focus {
+  border: 1.5px solid #1eb6ff;
+  outline: none;
+  box-shadow: 0 0 0 3px #1eb6ff22;
+}
+
+.add-products input[type="file"] {
+  width: 270px;
+  padding: 8px 0;
+  background: var(--panel);
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.add-products .add-product-button {
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  width: 140px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.06s ease-in;
+  margin-left: 12px;
+}
+.add-products .add-product-button:hover { background: #1eb6ff; }
+.add-products .add-product-button:active { transform: translateY(1px); }
+
+/* — Forme responsive — */
+@media (max-width: 1100px) {
+  .add-products > form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .add-products .add-product-button {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* =========================
+   Tableau produits (desktop/tablette)
+========================= */
 .products-content {
-  background: #fafdff;
+  background: var(--panel);
   border-radius: 18px;
-  box-shadow: 0 2px 16px #1eb6ff0a;
+  box-shadow: 0 2px 16px var(--shadow);
   padding: 0;
   overflow: hidden;
-  border: 1.5px solid #f0f4fa;
+  border: 1.5px solid var(--border);
 }
 
 .products-header {
   display: grid;
-  grid-template-columns: 120px 1.8fr 1fr 1fr;
+  grid-template-columns: 120px 1.8fr 1fr 1fr; /* Image | Nom | Prix | Actions */
   align-items: center;
   padding: 18px 32px 18px 24px;
-  background: linear-gradient(90deg, #f5fbff 0%, #fafdff 100%);
-  color: #4a5874;
+  background: linear-gradient(90deg, #f5fbff 0%, var(--panel) 100%);
+  color: var(--muted);
   font-weight: 600;
   font-size: 1.08rem;
 }
@@ -31,6 +150,7 @@
   padding: 18px 32px 18px 24px;
   background: #fff;
   font-size: 1.08rem;
+  border-top: 1px solid var(--border);
 }
 
 .product-item img {
@@ -39,7 +159,7 @@
   object-fit: contain;
   border-radius: 10px;
   background: #f5f8fb;
-  border: 1px solid #f0f4fa;
+  border: 1px solid var(--border);
   box-shadow: 0 1px 4px #1eb6ff11;
   display: block;
   margin: 0 auto;
@@ -47,163 +167,162 @@
 
 .product-item p {
   margin: 0;
-  color: #222;
+  color: var(--text);
   font-weight: 500;
+  word-break: break-word;
 }
 
 .product-actions {
   display: flex;
   gap: 10px;
   justify-content: flex-start;
+  flex-wrap: nowrap;
 }
 
 .edit-button {
   background: #fff;
-  color: #4a5874;
-  border: 1.5px solid #e3e7ef;
+  color: var(--muted);
+  border: 1.5px solid var(--border-2);
   border-radius: 7px;
-  padding: 7px 18px;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 8px 16px;
+  font-size: 0.98rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s, border 0.15s;
+  transition: background 0.15s, border 0.15s, transform 0.06s ease-in;
 }
-
-.edit-button:hover {
-  background: #f5f8fb;
-  border-color: #a259ff;
-}
+.edit-button:hover { background: #f5f8fb; border-color: #a259ff; }
+.edit-button:active { transform: translateY(1px); }
 
 .delete-button {
   background: #ffbdbd;
   color: #fff;
   border: none;
   border-radius: 7px;
-  padding: 7px 18px;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 8px 16px;
+  font-size: 0.98rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, transform 0.06s ease-in;
 }
-
-.delete-button:hover {
-  background: #ff7b7b;
-}
+.delete-button:hover { background: #ff7b7b; }
+.delete-button:active { transform: translateY(1px); }
 
 hr {
   border: none;
-  border-top: 1px solid #f0f4fa;
+  border-top: 1px solid var(--border);
   margin: 0;
 }
 
-/* À ajouter à la fin de Products.css */
-
-.add-products {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px #1eb6ff0a;
-  padding: 32px 32px 24px 32px;
-  margin-bottom: 32px;
-  margin-top: 12px;
-  max-width: 98vw;
-  border: 1.5px solid #f0f4fa;
-  box-shadow:  0px 3px 1px 1px #d1eaf3dc;
-}
-
-
-.add-products h2 {
-  margin: 0 0 24px 0;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #0a1128;
-}
-
-.add-products > div {
-  display: flex;
-  gap: 24px;
-  align-items: flex-end;
-  flex-wrap: wrap;
-}
-
-.add-products label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #0a1128;
-  font-size: 1.08rem;
-}
-
-.add-products input[type="text"],
-.add-products input[type="number"],
-.add-products input[type="url"],
-.add-products textarea {
-  width: 270px;
-  padding: 12px 16px;
-  border: 1.5px solid #e3e7ef;
-  border-radius: 8px;
-  background: #fafdff;
-  font-size: 1rem;
-  margin-bottom: 0;
-  transition: border 0.2s;
-}
-
-.add-products input[type="text"]:focus,
-.add-products input[type="number"]:focus,
-.add-products input[type="url"]:focus,
-.add-products textarea:focus {
-  border: 1.5px solid #1eb6ff;
-  outline: none;
-}
-
-.add-products input[type="file"] {
-  width: 270px;
-  padding: 8px 0;
-  background: #fafdff;
-  border-radius: 8px;
-  border: none;
-  font-size: 1rem;
-}
-
-.add-products .add-product-button {
-  background: #0a1128;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 0;
-  width: 120px;
-  font-size: 1.15rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.18s;
-  margin-left: 12px;
-}
-
-.add-products .add-product-button:hover {
-  background: #1eb6ff;
-  color: #fff;
-}
-
-@media (max-width: 1100px) {
-  .add-products > div {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
+/* — Ajustements pour écrans moyens — */
+@media (max-width: 1000px) {
+  .products-header,
+  .product-item {
+    grid-template-columns: 90px 2fr 1fr 1.2fr;
+    padding: 14px 16px 14px 12px;
+    font-size: 1rem;
   }
-  .add-products .add-product-button {
-    width: 100%;
-    margin-left: 0;
-  }
+  .product-item img { width: 56px; height: 56px; }
+  .edit-button, .delete-button { padding: 8px 12px; }
 }
 
+/* — Compact (≤ 900px) : resserrer — */
 @media (max-width: 900px) {
   .products-header,
   .product-item {
-    grid-template-columns: 80px 2fr 1fr 1.2fr;
-    padding: 12px 10px 12px 10px;
+    grid-template-columns: 80px 2fr 1fr 1.3fr;
+    padding: 12px 10px;
     font-size: 0.98rem;
   }
-  .product-item img {
-    width: 50px;
-    height: 50px;
+  .product-actions { gap: 8px; }
+  .product-item img { width: 50px; height: 50px; }
+}
+
+/* =========================
+   Mobile (≤ 700px)
+   -> Mode "cartes" lisibles sans changer le JSX
+========================= */
+@media (max-width: 700px) {
+  .products-content {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
   }
+
+  .products-header { display: none; }
+
+  .product-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 12px 0;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 4px 18px var(--shadow);
+  }
+
+  /* Réorganisation en lignes étiquetées via ::before */
+  .product-item > img {
+    width: 84px;
+    height: 84px;
+    margin: 0;
+    justify-self: start;
+  }
+
+  /* Nom (2e colonne desktop) */
+  .product-item > p:nth-of-type(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+  }
+  .product-item > p:nth-of-type(1)::before {
+    content: "Nom";
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: .2px;
+  }
+
+  /* Prix (3e colonne desktop) */
+  .product-item > p:nth-of-type(2) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .product-item > p:nth-of-type(2)::before {
+    content: "Prix";
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  /* Actions (4e colonne desktop) */
+  .product-actions {
+    width: 100%;
+    justify-content: stretch;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .edit-button,
+  .delete-button {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 0;
+    text-align: center;
+  }
+}
+
+/* — Très petits téléphones — */
+@media (max-width: 380px) {
+  .edit-button,
+  .delete-button { flex: 1 1 100%; }
+}
+
+/* =========================
+   Accessibilité / confort
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  .edit-button, .delete-button { transition: none; }
 }
