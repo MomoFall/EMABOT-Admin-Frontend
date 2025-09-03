@@ -239,7 +239,6 @@ hr {
 
 /* =========================
    Mobile (≤ 700px)
-   -> Mode "cartes" lisibles sans changer le JSX
 ========================= */
 @media (max-width: 700px) {
   .products-content {

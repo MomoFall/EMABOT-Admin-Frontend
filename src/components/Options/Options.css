@@ -115,17 +115,3 @@
     left:8px; right:8px; bottom:5px;
   }
 }
-
-/* =========================
-   Dark mode auto
-========================= */
-@media (prefers-color-scheme: dark){
-  :root{
-    --opt-bg:#1b1e25;
-    --opt-chip:#151923;
-    --opt-ink:#e9eef8;
-    --opt-text:#b9c2d6;
-    --opt-hover:#202633;
-    --opt-shadow: 0 2px 10px rgba(0,0,0,0.35);
-  }
-}
