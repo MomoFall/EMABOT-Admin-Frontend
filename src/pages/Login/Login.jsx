@@ -43,7 +43,7 @@ function Login() {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 alert('Connexion réussie !');
-                navigate('/');
+                navigate('/overview');
             } else {
                 alert('Erreur lors de la connexion : ' + response.data.message);
             }
@@ -67,8 +67,6 @@ function Login() {
                 </div>
                 <button type="submit">Se connecter</button>
             </form>
-            <div className="login-footer">
-            </div>
         </div>
     </div>
   )

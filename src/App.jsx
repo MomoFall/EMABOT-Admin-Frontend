@@ -14,8 +14,8 @@ function App() {
       {profile === true ? <ProfilePopup setProfile={setProfile} /> : null}
       <div>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Overview setProfile={setProfile} />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/overview" element={<Overview setProfile={setProfile} />} />
           <Route path="/products" element={<Products setProfile={setProfile} />} />
           <Route path="/orders" element={<Order setProfile={setProfile} />} />
           <Route path="/signin" element={<Signin />} />

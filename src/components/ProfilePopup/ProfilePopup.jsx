@@ -13,7 +13,7 @@ function ProfilePopup({setProfile}) {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setProfile(false)
-    navigate('/login')
+    navigate('/')
     
   }
 
